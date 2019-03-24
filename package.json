@@ -1,0 +1,50 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "Staking contracts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albertocuesta/Staking.git"
+  },
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "deploy:ganache": "truffle deploy --network development",
+    "start:ganache:dev": "ganache-cli -m \"width whip dream dress captain vessel mix drive oxygen broken soap bone\" -p 8545 -i 201903 --debug",
+    "test": "truffle test --network test",
+    "lint:sol": "solium -d contracts",
+    "lint:js": "eslint *.js .",
+    "lint": "npm run lint:sol && npm run lint:js",
+    "security": "docker run --rm --memory=3g -v $(pwd):/tmp -w \"/tmp/\" mythril/myth --truffle",
+    "graph:mixr": "surya graph contracts/MIXR.sol | dot -Tpng > MIXR.png",
+    "graph:bild": "surya graph contracts/BILD.sol | dot -Tpng > BILD.png",
+    "graph:all": "surya graph contracts/*.sol | dot -Tpng > CementDAO.png",
+    "graph": "echo Use graph:mixr or graph:bild or graph:all",
+    "describe": "surya describe contracts/*.sol",
+    "coverage": "solidity-coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "8.0.2",
+    "openzeppelin-solidity": "2.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-bignumber": "^3.0.0",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eth-gas-reporter": "^0.1.12",
+    "ethlint": "1.2.3",
+    "ganache-cli": "6.3.0",
+    "solidity-coverage": "0.6.0-beta.3",
+    "surya": "0.2.8",
+    "truffle": "5.0.0"
+  }
+}
