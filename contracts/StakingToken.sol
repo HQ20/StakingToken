@@ -47,9 +47,9 @@ contract StakingToken is ERC20, Ownable {
     function createStake(uint256 _stake)
         public
     {
+        _burn(msg.sender, _stake);
         if(stakes[msg.sender] == 0) addStakeholder(msg.sender);
         stakes[msg.sender] = stakes[msg.sender].add(_stake);
-        _burn(msg.sender, _stake);
     }
 
     /**
