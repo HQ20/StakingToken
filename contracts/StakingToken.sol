@@ -118,8 +118,8 @@ contract StakingToken is ERC20, Ownable {
     function addStakeholder(address _stakeholder)
         public
     {
-        (bool b, ) = isStakeholder(_stakeholder);
-        if(!b) stakeholders.push(_stakeholder);
+        (bool _isStakeholder, ) = isStakeholder(_stakeholder);
+        if(!_isStakeholder) stakeholders.push(_stakeholder);
     }
 
     /**
@@ -129,8 +129,8 @@ contract StakingToken is ERC20, Ownable {
     function removeStakeholder(address _stakeholder)
         public
     {
-        (bool b, uint256 s) = isStakeholder(_stakeholder);
-        if(b){
+        (bool _isStakeholder, uint256 s) = isStakeholder(_stakeholder);
+        if(_isStakeholder){
             stakeholders[s] = stakeholders[stakeholders.length - 1];
             stakeholders.pop();
         } 
@@ -140,6 +140,7 @@ contract StakingToken is ERC20, Ownable {
     
     /**
      * @notice A method to allow a stakeholder to check his rewards.
+     * @param _stakeholder The stakeholder to check rewards for.
      */
     function rewardOf(address _stakeholder) 
         public
@@ -165,7 +166,8 @@ contract StakingToken is ERC20, Ownable {
     }
 
     /** 
-     * @notice A mock method that calculates the rewards for each stakeholder.
+     * @notice A simple method that calculates the rewards for each stakeholder.
+     * @param _stakeholder The stakeholder to calculate rewards for.
      */
     function calculateReward(address _stakeholder)
         public
