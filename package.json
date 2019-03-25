@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Staking contracts",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/albertocuesta/Staking.git"
+    "type": "git"
   },
   "main": "truffle-config.js",
   "directories": {
@@ -18,7 +17,6 @@
     "lint:js": "eslint *.js .",
     "lint": "npm run lint:sol && npm run lint:js",
     "security": "docker run --rm --memory=3g -v $(pwd):/tmp -w \"/tmp/\" mythril/myth --truffle",
-    "graph": "echo Use graph:mixr or graph:bild or graph:all",
     "describe": "surya describe contracts/*.sol",
     "coverage": "solidity-coverage"
   },
