@@ -18,9 +18,6 @@
     "lint:js": "eslint *.js .",
     "lint": "npm run lint:sol && npm run lint:js",
     "security": "docker run --rm --memory=3g -v $(pwd):/tmp -w \"/tmp/\" mythril/myth --truffle",
-    "graph:mixr": "surya graph contracts/MIXR.sol | dot -Tpng > MIXR.png",
-    "graph:bild": "surya graph contracts/BILD.sol | dot -Tpng > BILD.png",
-    "graph:all": "surya graph contracts/*.sol | dot -Tpng > CementDAO.png",
     "graph": "echo Use graph:mixr or graph:bild or graph:all",
     "describe": "surya describe contracts/*.sol",
     "coverage": "solidity-coverage"
