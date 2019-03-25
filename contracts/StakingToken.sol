@@ -87,8 +87,9 @@ contract StakingToken is ERC20, Ownable {
         returns(uint256)
     {
         uint256 _totalStakes = 0;
-        for (uint256 s = 0; s < stakeholders.length; s += 1)
+        for (uint256 s = 0; s < stakeholders.length; s += 1){
             _totalStakes = _totalStakes.add(stakes[stakeholders[s]]);
+        }
         return _totalStakes;
     }
 
@@ -105,9 +106,9 @@ contract StakingToken is ERC20, Ownable {
         view
         returns(bool, uint256)
     {
-        for (uint256 s = 0; s < stakeholders.length; s += 1)
-            if (_address == stakeholders[s])
-                return (true, s);
+        for (uint256 s = 0; s < stakeholders.length; s += 1){
+            if (_address == stakeholders[s]) return (true, s);
+        }
         return (false, 0);
     }
 
@@ -160,8 +161,9 @@ contract StakingToken is ERC20, Ownable {
         returns(uint256)
     {
         uint256 _totalRewards = 0;
-        for (uint256 s = 0; s < stakeholders.length; s += 1)
+        for (uint256 s = 0; s < stakeholders.length; s += 1){
             _totalRewards = _totalRewards.add(rewards[stakeholders[s]]);
+        }
         return _totalRewards;
     }
 
