@@ -45,8 +45,8 @@ contract('StakingToken', (accounts) => {
         it('createStake adds a stakeholder.', async () => {
             await stakingToken.transfer(user, 3, { from: owner });
             await stakingToken.createStake(1, { from: user });
-             
-            console.log(await stakingToken.isStakeholder(user));
+            
+            assert.isTrue((await stakingToken.isStakeholder(user))[0]);
         });
 
         itShouldThrow(
@@ -73,7 +73,7 @@ contract('StakingToken', (accounts) => {
             await stakingToken.createStake(3, { from: user });
             await stakingToken.removeStake(3, { from: user });
 
-            console.log(await stakingToken.isStakeholder(user));
+            assert.isFalse((await stakingToken.isStakeholder(user))[0]);
         });
 
         itShouldThrow(
