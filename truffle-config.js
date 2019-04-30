@@ -8,8 +8,7 @@ module.exports = {
     },
 
     mocha: {
-        // see more here: https://www.npmjs.com/package/eth-gas-reporter
-        // reporter: 'eth-gas-reporter',
+        reporter: 'eth-gas-reporter',
     },
 
     solc: {
