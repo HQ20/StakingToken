@@ -1,0 +1,32 @@
+{
+    "extends": [
+        ":separateMajorReleases",
+        ":combinePatchMinorReleases",
+        ":ignoreUnstable",
+        ":prImmediately",
+        ":renovatePrefix",
+        ":semanticPrefixFixDepsChoreOthers",
+        ":updateNotScheduled",
+        ":automergeDisabled",
+        ":ignoreModulesAndTests",
+        ":maintainLockFilesDisabled",
+        ":autodetectPinVersions",
+        ":prHourlyLimit2",
+        ":prConcurrentLimit20",
+        ":assignee(albertocuestacanada)",
+        ":reviewer(obernardovieira)",
+        "group:monorepos",
+        "group:recommended",
+        "helpers:disableTypesNodeMajor",
+        "schedule:earlyMondays",
+        "bumpVersion:minor"
+    ],
+    "vulnerabilityAlerts": {
+        "labels": [
+            "security"
+        ],
+        "assignees": [
+            "@obernardovieira"
+        ]
+    }
+}
