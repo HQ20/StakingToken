@@ -21,8 +21,8 @@
     "coverage": "solidity-coverage"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "alberto@techhq.io",
+  "license": "Apache-2.0",
   "dependencies": {
     "bignumber.js": "8.0.2",
     "openzeppelin-solidity": "2.2.0"
