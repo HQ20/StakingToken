@@ -20,13 +20,13 @@ contract('StakingToken', (accounts) => {
         beforeEach(async () => {
             stakingToken = await StakingToken.new(
                 owner,
-                manyTokens.toString(10)
+                manyTokens.toString(10),
             );
         });
 
         itShouldThrow(
             'createStake requires a StakingToken balance equal or above the stake.',
-            async () => {    
+            async () => {
                 await stakingToken.createStake(1, { from: user });
             },
             'revert',
@@ -45,13 +45,13 @@ contract('StakingToken', (accounts) => {
         it('createStake adds a stakeholder.', async () => {
             await stakingToken.transfer(user, 3, { from: owner });
             await stakingToken.createStake(1, { from: user });
-            
+
             assert.isTrue((await stakingToken.isStakeholder(user))[0]);
         });
 
         itShouldThrow(
             'removeStake requires a stake equal or above the amount to remove.',
-            async () => {    
+            async () => {
                 await stakingToken.removeStake(1, { from: user });
             },
             'revert',
@@ -78,7 +78,7 @@ contract('StakingToken', (accounts) => {
 
         itShouldThrow(
             'rewards can only be distributed by the contract owner.',
-            async () => {    
+            async () => {
                 await stakingToken.distributeRewards({ from: user });
             },
             'revert',
@@ -88,7 +88,7 @@ contract('StakingToken', (accounts) => {
             await stakingToken.transfer(user, 100, { from: owner });
             await stakingToken.createStake(100, { from: user });
             await stakingToken.distributeRewards({ from: owner });
-            
+
             assert.equal(await stakingToken.rewardOf(user), 1);
             assert.equal(await stakingToken.totalRewards(), 1);
         });
@@ -98,7 +98,7 @@ contract('StakingToken', (accounts) => {
             await stakingToken.createStake(100, { from: user });
             await stakingToken.distributeRewards({ from: owner });
             await stakingToken.withdrawReward({ from: user });
-            
+
             const initialSupply = manyTokens;
             const existingStakes = 100;
             const mintedAndWithdrawn = 1;
@@ -107,8 +107,9 @@ contract('StakingToken', (accounts) => {
             assert.equal(await stakingToken.stakeOf(user), 100);
             assert.equal(await stakingToken.rewardOf(user), 0);
             assert.equal(
-                await stakingToken.totalSupply(), 
-                initialSupply.minus(existingStakes).plus(mintedAndWithdrawn).toString(10));
+                await stakingToken.totalSupply(),
+                initialSupply.minus(existingStakes).plus(mintedAndWithdrawn).toString(10),
+            );
             assert.equal(await stakingToken.totalStakes(), 100);
             assert.equal(await stakingToken.totalRewards(), 0);
         });
