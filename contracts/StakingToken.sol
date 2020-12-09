@@ -32,9 +32,9 @@ contract StakingToken is ERC20, Ownable {
      * @param _owner The address to receive all tokens on construction.
      * @param _supply The amount of tokens to mint on construction.
      */
-    constructor(address _owner, uint256 _supply) 
+    constructor(address _owner, uint256 _supply)
         public
-    { 
+    {
         _mint(_owner, _supply);
     }
 
@@ -48,7 +48,7 @@ contract StakingToken is ERC20, Ownable {
         public
     {
         _burn(msg.sender, _stake);
-        if(stakes[msg.sender] == 0) addStakeholder(msg.sender);
+        if (stakes[msg.sender] == 0) addStakeholder(msg.sender);
         stakes[msg.sender] = stakes[msg.sender].add(_stake);
     }
 
@@ -60,7 +60,7 @@ contract StakingToken is ERC20, Ownable {
         public
     {
         stakes[msg.sender] = stakes[msg.sender].sub(_stake);
-        if(stakes[msg.sender] == 0) removeStakeholder(msg.sender);
+        if (stakes[msg.sender] == 0) removeStakeholder(msg.sender);
         _mint(msg.sender, _stake);
     }
 
@@ -98,7 +98,7 @@ contract StakingToken is ERC20, Ownable {
     /**
      * @notice A method to check if an address is a stakeholder.
      * @param _address The address to verify.
-     * @return bool, uint256 Whether the address is a stakeholder, 
+     * @return bool, uint256 Whether the address is a stakeholder,
      * and if so its position in the stakeholders array.
      */
     function isStakeholder(address _address)
@@ -120,7 +120,7 @@ contract StakingToken is ERC20, Ownable {
         public
     {
         (bool _isStakeholder, ) = isStakeholder(_stakeholder);
-        if(!_isStakeholder) stakeholders.push(_stakeholder);
+        if (!_isStakeholder) stakeholders.push(_stakeholder);
     }
 
     /**
@@ -131,19 +131,19 @@ contract StakingToken is ERC20, Ownable {
         public
     {
         (bool _isStakeholder, uint256 s) = isStakeholder(_stakeholder);
-        if(_isStakeholder){
+        if (_isStakeholder){
             stakeholders[s] = stakeholders[stakeholders.length - 1];
             stakeholders.pop();
-        } 
+        }
     }
 
     // ---------- REWARDS ----------
-    
+
     /**
      * @notice A method to allow a stakeholder to check his rewards.
      * @param _stakeholder The stakeholder to check rewards for.
      */
-    function rewardOf(address _stakeholder) 
+    function rewardOf(address _stakeholder)
         public
         view
         returns(uint256)
@@ -167,7 +167,7 @@ contract StakingToken is ERC20, Ownable {
         return _totalRewards;
     }
 
-    /** 
+    /**
      * @notice A simple method that calculates the rewards for each stakeholder.
      * @param _stakeholder The stakeholder to calculate rewards for.
      */
@@ -182,7 +182,7 @@ contract StakingToken is ERC20, Ownable {
     /**
      * @notice A method to distribute rewards to all stakeholders.
      */
-    function distributeRewards() 
+    function distributeRewards()
         public
         onlyOwner
     {
@@ -196,7 +196,7 @@ contract StakingToken is ERC20, Ownable {
     /**
      * @notice A method to allow a stakeholder to withdraw his rewards.
      */
-    function withdrawReward() 
+    function withdrawReward()
         public
     {
         uint256 reward = rewards[msg.sender];
