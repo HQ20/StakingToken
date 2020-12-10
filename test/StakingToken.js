@@ -31,7 +31,7 @@ contract('StakingToken', (accounts) => {
             async () => {
                 await stakingToken.createStake(1, { from: user });
             },
-            'revert',
+            'ERC20: burn amount exceeds balance',
         );
 
         it('createStake creates a stake.', async () => {
@@ -56,7 +56,7 @@ contract('StakingToken', (accounts) => {
             async () => {
                 await stakingToken.removeStake(1, { from: user });
             },
-            'revert',
+            'StakingToken: Insufficient amount of stakes',
         );
 
         it('removeStake removes a stake.', async () => {
@@ -83,7 +83,7 @@ contract('StakingToken', (accounts) => {
             async () => {
                 await stakingToken.distributeRewards({ from: user });
             },
-            'revert',
+            'Ownable: caller is not the owner',
         );
 
         it('rewards are distributed.', async () => {
