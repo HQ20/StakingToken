@@ -19,6 +19,8 @@ contract('StakingToken', (accounts) => {
     describe('Staking', () => {
         beforeEach(async () => {
             stakingToken = await StakingToken.new(
+                'Test Staking Token',
+                'TST',
                 owner,
                 manyTokens.toString(10),
             );
