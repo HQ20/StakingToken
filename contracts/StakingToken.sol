@@ -1,8 +1,9 @@
-pragma solidity ^0.5.0;
+pragma solidity >=0.6.0 <0.8.0;
 
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
 
 /**
  * @title Staking Token (STK)
@@ -29,11 +30,19 @@ contract StakingToken is ERC20, Ownable {
 
     /**
      * @notice The constructor for the Staking Token.
+     * @param _name The name of the token.
+     * @param _symbol The symbol of the token.
      * @param _owner The address to receive all tokens on construction.
      * @param _supply The amount of tokens to mint on construction.
      */
-    constructor(address _owner, uint256 _supply)
+    constructor(
+        string memory _name,
+        string memory _symbol,
+        address _owner,
+        uint256 _supply
+    )
         public
+        ERC20(_name, _symbol)
     {
         _mint(_owner, _supply);
     }
