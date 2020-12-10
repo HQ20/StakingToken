@@ -68,6 +68,8 @@ contract StakingToken is ERC20, Ownable {
     function removeStake(uint256 _stake)
         public
     {
+        require(stakes[msg.sender] >= _stake, "StakingToken: Insufficient amount of stakes");
+
         stakes[msg.sender] = stakes[msg.sender].sub(_stake);
         if (stakes[msg.sender] == 0) removeStakeholder(msg.sender);
         _mint(msg.sender, _stake);
