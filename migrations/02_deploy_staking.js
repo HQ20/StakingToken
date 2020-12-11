@@ -6,7 +6,7 @@ module.exports = (deployer, network, accounts) => {
     deployer.deploy(
         StakingToken,
         'Staking Token',
-        'STT',
+        'STK',
         accounts[1],
         new BigNumber(10).pow(18).multipliedBy(525).toString(10),
     );
