@@ -32,12 +32,10 @@ abstract contract StakingToken is ERC20, Ownable {
      * @notice The constructor for the Staking Token.
      * @param _name The name of the token.
      * @param _symbol The symbol of the token.
-     * @param _owner The address to receive all tokens on construction.
      */
     constructor(
         string memory _name,
-        string memory _symbol,
-        address _owner
+        string memory _symbol
     )
         public
         ERC20(_name, _symbol)
