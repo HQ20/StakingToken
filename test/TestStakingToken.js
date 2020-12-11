@@ -1,4 +1,4 @@
-const StakingToken = artifacts.require('./StakingToken.sol');
+const TestStakingToken = artifacts.require('./TestStakingToken.sol');
 
 const BigNumber = require('bignumber.js');
 const chai = require('chai');
@@ -13,12 +13,12 @@ contract('StakingToken', (accounts) => {
     const user = accounts[1];
 
     before(async () => {
-        stakingToken = await StakingToken.deployed();
+        stakingToken = await TestStakingToken.deployed();
     });
 
     describe('Staking', () => {
         beforeEach(async () => {
-            stakingToken = await StakingToken.new(
+            stakingToken = await TestStakingToken.new(
                 'Staking Token',
                 'STK',
                 owner,
