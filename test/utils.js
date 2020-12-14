@@ -1,5 +1,3 @@
-const BigNumber = require('bignumber.js');
-
 const itShouldThrow = (reason, fun, expectedMessage) => {
     it(reason, async () => {
         let error = false;

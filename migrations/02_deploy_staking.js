@@ -1,9 +1,12 @@
 const BigNumber = require('bignumber.js');
-const StakingToken = artifacts.require('./StakingToken.sol');
 
-module.exports = function(deployer, network, accounts) {
+const TestStakingToken = artifacts.require('./TestStakingToken.sol');
+
+module.exports = (deployer, network, accounts) => {
     deployer.deploy(
-        StakingToken, 
+        TestStakingToken,
+        'Test Staking Token',
+        'TST',
         accounts[1],
         new BigNumber(10).pow(18).multipliedBy(525).toString(10),
     );
