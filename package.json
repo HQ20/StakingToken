@@ -37,7 +37,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "eth-gas-reporter": "0.2.20",
-    "ethlint": "1.2.3",
+    "ethlint": "1.2.5",
     "ganache-cli": "6.12.1",
     "solidity-coverage": "0.7.13",
     "surya": "0.4.1",
