@@ -23,8 +23,8 @@ contract TestStakingToken is StakingToken {
         uint256 _supply
     )
     public
-    StakingToken(_name, _symbol, _owner)
+    StakingToken(_name, _symbol)
     {
-        _mint(msg.sender, _supply);
+        _mint(_owner, _supply);
     }
 }
