@@ -5,8 +5,8 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 /**
- * @title Staking Token (STK)
- * @author Alberto Cuesta Canada
+ * @title Staking Token (sunciti)
+ * @author Biswajit choudhury of india
  * @notice Implements a basic ERC20 staking token with incentive distribution.
  */
 contract StakingToken is ERC20, Ownable {
